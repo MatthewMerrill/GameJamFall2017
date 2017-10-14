@@ -9,26 +9,30 @@ analyser.minDecibels = -90;
 analyser.maxDecibels = -10;
 analyser.smoothingTimeConstant = 0;
 
-function readMic() {
+let input = 0;
+
+function readInput() {
   analyser.getFloatTimeDomainData(array);
+  input = array.reduce((a,b)=>a+b, 0) / 5// - analyser.minDecibels /
+      // (analyser.maxDecibels - analyser.minDecibels)
 }
 
 if (navigator.getUserMedia) {
   console.log('getUserMedia supported.');
-  navigator.getUserMedia (
+  navigator.getUserMedia(
       // constraints - only audio needed for this app
       {
         audio: true
       },
 
       // Success callback
-      function(stream) {
+      function (stream) {
         source = audioCtx.createMediaStreamSource(stream);
         source.connect(analyser);
       },
 
       // Error callback
-      function(err) {
+      function (err) {
         console.log('The following gUM error occured: ' + err);
       }
   );
