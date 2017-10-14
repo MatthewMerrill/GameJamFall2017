@@ -1,7 +1,9 @@
-html, body {
+html {
   background-color: #000;
   color: #eee;
 }
+
+
 
 #gameCanvas {
   width: 100vw;
@@ -12,5 +14,6 @@ html, body {
   position: absolute;
   top:0;bottom:0; /* vertical center */
   left:0;right:0; /* horizontal center */
+  z-index: -99;
 }
 

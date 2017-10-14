@@ -6,5 +6,6 @@ function runGame() {
 
 function tick() {
   draw();
-  setTimeout(tick, 20);
+  // if (Math.random() > 0.001)
+    setTimeout(tick, 5);
 }

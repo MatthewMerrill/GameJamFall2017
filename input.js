@@ -3,14 +3,14 @@
 
 var audioCtx = new AudioContext();
 var analyser = audioCtx.createAnalyser();
-var myDataArray = new Float32Array(analyser.frequencyBinCount);
+var array = new Float32Array(analyser.frequencyBinCount);
 
 analyser.minDecibels = -90;
 analyser.maxDecibels = -10;
-analyser.smoothingTimeConstant = 0.85;
+analyser.smoothingTimeConstant = 0;
 
 function readMic() {
-  analyser.getFloatFrequencyData(myDataArray);
+  analyser.getFloatTimeDomainData(array);
 }
 
 if (navigator.getUserMedia) {
