@@ -14,6 +14,7 @@ let moneymaker = 0;
 const greenLo = 1/8 * 1600;
 const greenHi = 2/8 * 1600;
 
+var maxMoneyMade = 0;
 var moneyMade = 0;
 
 
@@ -23,6 +24,7 @@ function runGame() {
       ezmoney.parentNode.removeChild(ezmoney);
   }
   moneymaker = 0;
+  document.getElementById('msg').textContent = '$$$' + moneyMade;
   moneyslidepos = -(moneytext.width + document.width);
   moneytext.style.left = moneyslidepos;
   console.log(moneytext.style.left);
@@ -78,7 +80,9 @@ function easyMoney() {
   setTimeout(function () {
     moneytext.style['animation-name'] = 'moneyslide';
   }, 1);
-  moneymaker += 50;
+  if (moneyMade < 9000) {
+    moneymaker += 50;
+  }
 }
 function addPendingMoney() {
   if (moneymaker > 0) {
@@ -95,7 +99,12 @@ function addPendingMoney() {
     span.style['transform'] = `rotate(${rot}deg)`;
     document.body.appendChild(span);
     moneymaker--;
-	moneyMade++;
+    moneyMade++;
+    document.getElementById('msg').textContent = '$$$' + moneyMade;
+    if (moneyMade > maxMoneyMade) {
+      maxMoneyMade = moneyMade;
+      document.getElementById('msg2').textContent = 'max: $$$' + maxMoneyMade;
+    }
   }
 }
 
