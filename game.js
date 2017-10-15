@@ -14,6 +14,8 @@ let moneymaker = 0;
 const greenLo = 1/8 * 1600;
 const greenHi = 2/8 * 1600;
 
+var moneyMade = 0;
+
 
 function runGame() {
   for (var i = 0; i < 100; i++) {
@@ -60,6 +62,7 @@ function tick(delta) {
   }
 
   if (ball.position < 0) {
+	moneyMade=0;
     setTimeout(runGame, 1000);
   }
   else {
@@ -92,6 +95,7 @@ function addPendingMoney() {
     span.style['transform'] = `rotate(${rot}deg)`;
     document.body.appendChild(span);
     moneymaker--;
+	moneyMade++;
   }
 }
 
