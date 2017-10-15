@@ -2,19 +2,17 @@
 // https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js
 
 var audioCtx = new AudioContext();
-var analyser = audioCtx.createAnalyser();
-var array = new Float32Array(analyser.frequencyBinCount);
-
-analyser.minDecibels = -90;
-analyser.maxDecibels = -10;
-analyser.smoothingTimeConstant = 0;
+let meter;
 
 let input = 0;
+let clippingLevel = .3
+let hitting = false;
 
 function readInput() {
-  analyser.getFloatTimeDomainData(array);
-  input = array.reduce((a,b)=>a+b, 0) / 5// - analyser.minDecibels /
-      // (analyser.maxDecibels - analyser.minDecibels)
+  if (meter) {
+    input = meter.volume;
+    hitting = meter.checkClipping();
+  }
 }
 
 if (navigator.getUserMedia) {
@@ -27,8 +25,9 @@ if (navigator.getUserMedia) {
 
       // Success callback
       function (stream) {
-        source = audioCtx.createMediaStreamSource(stream);
-        source.connect(analyser);
+        source = audioCtx.createMediaStreamSource(stream, clippingLevel);
+        meter = createAudioMeter(audioCtx);
+        source.connect(meter);
       },
 
       // Error callback

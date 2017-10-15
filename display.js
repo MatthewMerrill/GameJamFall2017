@@ -17,20 +17,21 @@ function draw(state) {
   ctx.fill();
 
   ctx.fillStyle = '#55b';
-  ctx.fillRect(0, 0, 20, threshold * canvas.height);
+  ctx.fillRect(0, 0, 20, clippingLevel * canvas.height);
   ctx.fill();
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = (meter&&meter.clipping) ? '#8c8' : '#c88';
   ctx.fillRect(0, 0, 10, input * canvas.height);
   ctx.fill();
 
   ctx.fillStyle = '#55b';
-  ctx.fillRect(canvas.width - 20, 0, 20, threshold * canvas.height);
+  ctx.fillRect(canvas.width - 20, 0, 20, clippingLevel * canvas.height);
   ctx.fill();
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle =  (meter&&meter.clipping) ? '#8c8' : '#c88';
   ctx.fillRect(canvas.width - 10, 0, 10, input * canvas.height);
   ctx.fill();
 
   ctx.beginPath();
+  ctx.fillStyle = '#fff';
   ctx.arc(ball.sway + canvas.width / 2, ball.position, 30, 0, 7);
   ctx.fill();
   ctx.stroke();
