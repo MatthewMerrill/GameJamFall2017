@@ -19,6 +19,25 @@ html {
   }
 }
 
+#moneyslide {
+  display: block;
+  width: 1000000vw;
+  position: fixed;
+  top: 20vh;
+  font-size: 30vh;
+  margin-left: -600vw;
+  animation-duration: 3s;
+  /*z-index: 999;*/
+}
+@keyframes moneyslide {
+  0% {
+    margin-left: 100vw;
+  }
+  100% {
+    margin-left: -600vw;
+  }
+}
+
 .ezmoney {
   position: fixed;
   color: green;
