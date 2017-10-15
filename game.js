@@ -103,7 +103,7 @@ function addPendingMoney() {
     document.getElementById('msg').textContent = '$$$' + moneyMade;
     if (moneyMade > maxMoneyMade) {
       maxMoneyMade = moneyMade;
-      document.getElementById('msg2').textContent = 'max: $$$' + maxMoneyMade;
+      document.getElementById('msg2').textContent = 'most made in a performance: $$$' + maxMoneyMade;
     }
   }
 }
