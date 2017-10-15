@@ -30,11 +30,11 @@ function draw(state) {
   ctx.fillRect(canvas.width - 10, 0, 10, input * canvas.height);
   ctx.fill();
 
-  ctx.beginPath();
   ctx.fillStyle = '#fff';
+  ctx.beginPath();
   ctx.arc(ball.sway + canvas.width / 2, ball.position, 30, 0, 7);
-  ctx.fill();
-  ctx.stroke();
+  // ctx.fill();
+  // ctx.stroke();
   ctx.closePath();
 }
 

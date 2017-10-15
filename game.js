@@ -7,6 +7,7 @@ let ball = {
   swayTrend: 3,
 };
 
+let moneymaker = 0;
 // const threshold = .4;
 
 const greenLo = 1/8 * 1600;
@@ -18,6 +19,7 @@ function runGame() {
     for (let ezmoney of document.getElementsByClassName('ezmoney'))
       ezmoney.parentNode.removeChild(ezmoney);
   }
+  moneymaker = 0;
   ball = {
     position: 800,
     velocity: 10,
@@ -27,7 +29,7 @@ function runGame() {
   tick();
 }
 
-function tick() {
+function tick(delta) {
   readInput();
 
   if (ball.sway > 400) {
@@ -37,6 +39,7 @@ function tick() {
     ball.swayTrend = + Math.abs(ball.swayTrend);
   }
   ball.sway += ball.swayTrend;
+  setTimeout(addPendingMoney, 0);
 
   if (hitting && ball.velocity < 0 &&
       ball.position > greenLo &&
@@ -47,8 +50,8 @@ function tick() {
     easyMoney();
   }
   else {
-    ball.position += ball.velocity;
-    ball.velocity -= .08;
+    ball.position += 4 * ball.velocity;
+    ball.velocity -= 4 * .08;
     ball.velocity = Math.max(-100, ball.velocity);
   }
 
@@ -57,12 +60,17 @@ function tick() {
   }
   else {
     draw();
-    setTimeout(tick, 5);
+    requestAnimationFrame(tick);
+    // setTimeout(tick, 5);
   }
 }
 
 function easyMoney() {
-  for (var i = 0; i < 150; i++) {
+  sayEasyMoney();
+  moneymaker += 50;
+}
+function addPendingMoney() {
+  if (moneymaker > 0) {
     let span = document.createElement('span');
     span.classList.add('ezmoney');
     span.textContent = '$$$';
@@ -75,6 +83,7 @@ function easyMoney() {
     span.style['-webkit-transform'] = `rotate(${rot}deg)`;
     span.style['transform'] = `rotate(${rot}deg)`;
     document.body.appendChild(span);
+    moneymaker--;
   }
 }
 

@@ -5,13 +5,13 @@ const audioCtx = new AudioContext();
 let meter;
 
 let input = 0;
-let clippingLevel = .3;
+let clippingLevel = .5;
 let hitting = false;
 
 function readInput() {
   if (meter) {
     input = meter.volume;
-    hitting = meter.checkClipping();
+    hitting = meter.checkClipping() || input > clippingLevel;
   }
 }
 
