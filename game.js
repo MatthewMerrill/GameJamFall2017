@@ -7,6 +7,7 @@ let ball = {
   swayTrend: 3,
 };
 
+let moneytext = document.getElementById('moneyslide');
 let moneymaker = 0;
 // const threshold = .4;
 
@@ -20,6 +21,9 @@ function runGame() {
       ezmoney.parentNode.removeChild(ezmoney);
   }
   moneymaker = 0;
+  moneyslidepos = -(moneytext.width + document.width);
+  moneytext.style.left = moneyslidepos;
+  console.log(moneytext.style.left);
   ball = {
     position: 800,
     velocity: 10,
@@ -67,6 +71,10 @@ function tick(delta) {
 
 function easyMoney() {
   sayEasyMoney();
+  moneytext.style['animation-name'] = '';
+  setTimeout(function () {
+    moneytext.style['animation-name'] = 'moneyslide';
+  }, 1);
   moneymaker += 50;
 }
 function addPendingMoney() {
