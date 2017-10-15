@@ -50,7 +50,7 @@ function tick(delta) {
   setTimeout(addPendingMoney, 0);
 
   if (hitting && ball.velocity < 0 &&
-      ball.position / 2 > greenLo &&
+      ball.position > greenLo &&
       ball.position < greenHi) {
     ball.velocity = -ball.velocity + 3 * (Math.random()-.5);
     ball.velocity = Math.max(10, ball.velocity);
