@@ -1,21 +1,29 @@
 console.log('Welcome to Easy Money!');
 
-const gameState = {
-
-};
-const ball = {
+let ball = {
   position: 800,
   velocity: 10,
   sway: 0,
   swayTrend: 3,
 };
-const threshold = .4;
+
+// const threshold = .4;
 
 const greenLo = 1/8 * 1600;
 const greenHi = 2/8 * 1600;
 
 
 function runGame() {
+  for (var i = 0; i < 100; i++) {
+    for (let ezmoney of document.getElementsByClassName('ezmoney'))
+      ezmoney.parentNode.removeChild(ezmoney);
+  }
+  ball = {
+    position: 800,
+    velocity: 10,
+    sway: 0,
+    swayTrend: 3,
+  };
   tick();
 }
 
@@ -44,20 +52,28 @@ function tick() {
     ball.velocity = Math.max(-100, ball.velocity);
   }
 
-  draw();
-  setTimeout(tick, 5);
+  if (ball.position < 0) {
+    setTimeout(runGame, 1000);
+  }
+  else {
+    draw();
+    setTimeout(tick, 5);
+  }
 }
 
 function easyMoney() {
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 150; i++) {
     let span = document.createElement('span');
     span.classList.add('ezmoney');
     span.textContent = '$$$';
 
     span.style.position = 'fixed';
-    span.style.left = Math.random() * 100 + 'vw';
-    span.style.top = Math.random() * 100 + 'vh';
-    span.style.rotation = 0 + (Math.random()-.5) * 360 + 'deg';
+    span.style.left = ((Math.random())*200-25) + 'vw';
+    span.style.top = ((Math.random())*200-25) + 'vh';
+    let rot = (Math.random()-.5) * 270;
+    span.style['-ms-transform'] = `rotate(${rot}deg)`;
+    span.style['-webkit-transform'] = `rotate(${rot}deg)`;
+    span.style['transform'] = `rotate(${rot}deg)`;
     document.body.appendChild(span);
   }
 }
