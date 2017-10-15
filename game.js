@@ -80,7 +80,7 @@ function easyMoney() {
 
 function sayEasyMoney() {
   var audio_files = [];
-  for(var i = 0; i < 20; i++){
+  for(var i = 0; i < 22; i++){
 	audio_files.push(("sound/ezmoney" + (i+1) + ".wav"));
   }
   var audio = new Audio(audio_files[Math.floor(Math.random() * audio_files.length)]);
