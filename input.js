@@ -1,11 +1,11 @@
 // Copypasta  Credits:
 // https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js
 
-var audioCtx = new AudioContext();
+const audioCtx = new AudioContext();
 let meter;
 
 let input = 0;
-let clippingLevel = .3
+let clippingLevel = .3;
 let hitting = false;
 
 function readInput() {
