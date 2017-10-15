@@ -61,3 +61,12 @@ function easyMoney() {
     document.body.appendChild(span);
   }
 }
+
+function sayEasyMoney() {
+  var audio_files = [];
+  for(var i = 0; i < 20; i++){
+	audio_files.push(("sound/ezmoney" + (i+1) + ".wav"));
+  }
+  var audio = new Audio(audio_files[Math.floor(Math.random() * audio_files.length)]);
+  audio.play();
+}
