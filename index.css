@@ -3,6 +3,22 @@ html {
   color: #eee;
 }
 
+#intro {
+  display: block;
+  position: fixed;
+  margin-top: 50vh;
+  animation-duration: 10s;
+  animation-name: slidein;
+}
+@keyframes slidein {
+  0% {
+    margin-top: 100vh;
+  }
+  100% {
+    margin-top: 50vh;
+  }
+}
+
 .ezmoney {
   position: fixed;
   color: green;

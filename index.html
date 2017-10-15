@@ -7,14 +7,31 @@
 </head>
 <body>
 
-  <canvas id="gameCanvas" width="900" height="1600"></canvas>
-  <h1>Easy Money!</h1>
-  <h2 id="msg"></h2>
+  <div id="intro">
+    <pre>
+You are a professional hacky-sack extraordinaire.
+You are putting on a performance.
+
+
+Go make some easy money.
+    </pre>
+  </div>
+  <div id="game" style="display: none">
+    <canvas id="gameCanvas" width="900" height="1600"></canvas>
+    <h1>Easy Money!</h1>
+    <h2 id="msg"></h2>
+  </div>
 
   <script src="./cwilso.volume-meter.js"></script>
   <script src="./input.js"></script>
   <script src="./display.js"></script>
   <script src="./game.js"></script>
-  <script>runGame();</script>
+  <script>
+    setTimeout(function() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('game').style.display = 'block';
+      runGame();
+    }, 15000);
+  </script>
 </body>
 </html>
