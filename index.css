@@ -3,7 +3,12 @@ html {
   color: #eee;
 }
 
-
+.ezmoney {
+  position: fixed;
+  color: green;
+  z-index: 999;
+  font-size: 10vw;
+}
 
 #gameCanvas {
   width: 56.25vh;
