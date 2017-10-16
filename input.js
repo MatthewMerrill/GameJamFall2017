@@ -2,7 +2,7 @@
 // https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js
 
 const audioCtx = new AudioContext();
-let meter;
+let meter = undefined;
 
 let input = 0;
 let clippingLevel = .5;
