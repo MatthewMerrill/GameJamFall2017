@@ -49,7 +49,7 @@ function tick(delta) {
   ball.sway += ball.swayTrend;
   setTimeout(addPendingMoney, 0);
 
-  if (hitting && ball.velocity < 0 &&
+  if ((location.hash == '#hack' || hitting) && ball.velocity < 0 &&
       ball.position > greenLo &&
       ball.position < greenHi) {
     ball.velocity = -ball.velocity + 3 * (Math.random()-.5);
